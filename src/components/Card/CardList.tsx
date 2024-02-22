@@ -6,30 +6,30 @@ interface CardListProps {
   items: User[];
   selectCard: string;
   onSelectCard: React.Dispatch<React.SetStateAction<string>>;
-  onDeleteCard: (id: string) => void; // Function to handle card deletion
+  onDeleteCard: (id: string) => void;
 }
 
 const CardList: React.FC<CardListProps> = ({
-    items,
-    selectCard,
-    onSelectCard,
-    onDeleteCard,
-  }: CardListProps) => {
-    return (
-      <div>
-        {items.map((item) => (
-          <Card
-            id={item.id}
-            name={item.username}
-            key={item.id}
-            image={item.profile}
-            onSelectCard={onSelectCard}
-            selectCard={selectCard}
-            onDelete={() => onDeleteCard(item.id)} // Pass the ID argument here
-          />
-        ))}
-      </div>
-    );
-  };
+  items,
+  selectCard,
+  onSelectCard,
+  onDeleteCard,
+}: CardListProps) => {
+  return (
+    <div>
+      {items.map((item) => (
+        <Card
+          id={item.id}
+          name={item.name}
+          key={item.id}
+          image={item.image}
+          onSelectCard={onSelectCard}
+          selectCard={selectCard}
+          onDelete={() => onDeleteCard(item.id)} // Pass the ID argument here
+        />
+      ))}
+    </div>
+  );
+};
 
 export { CardList };

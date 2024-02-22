@@ -9,7 +9,7 @@ const Form: React.FC<FormProps> = ({ addNewUser }) => {
   const [user, setUser] = useState<User>({
     id: "",
     name: "",
-    image: null,
+    image: "",
   });
 
   const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -39,7 +39,7 @@ const Form: React.FC<FormProps> = ({ addNewUser }) => {
     setUser({
       id: "",
       name: "",
-      image: null,
+      image: "",
     });
   };
 
@@ -55,7 +55,7 @@ const Form: React.FC<FormProps> = ({ addNewUser }) => {
             id="name"
             name="name"
             required
-            value={user.name}
+            // value={user.name}
             onChange={handleNameChange}
             className="w-full rounded border-gray-300 py-2 px-4 focus:outline-none focus:border-blue-400"
           />
@@ -67,8 +67,9 @@ const Form: React.FC<FormProps> = ({ addNewUser }) => {
           </label>
           <input
             type="file"
-            id="file"
-            name="file"
+            id="image"
+            name="image"
+            accept="image/*"
             required
             onChange={handleFileChange}
             className="w-full rounded border-gray-300 py-2 px-4 focus:outline-none focus:border-blue-400"

@@ -1,10 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { CardList } from "@/components/Card"; 
+import { CardList } from "@/components/Card";
 import { Modal } from "@/components/modal";
-import Form from "@/components/Form";
-import { User } from "@/app/page"; // Import the User interface
+import {Form} from "@/components/Form";
 
+export interface User {
+  id: string;
+  name: string;
+  image: string;
+}
 const UserPage = () => {
   const [users, setUsers] = useState<User[]>([]); // Specify the type for the users state
   const [selectedCard, setSelectedCard] = useState<string>(""); // Specify the type for selectedCard
@@ -18,7 +22,8 @@ const UserPage = () => {
     setSelectedCard(""); // Deselect the card after deletion
   };
 
-  const handleAddUser = (user: User) => { // Specify the type for the user argument
+  const handleAddUser = (user: User) => {
+    // Specify the type for the user argument
     setUsers([...users, user]);
   };
 
@@ -30,7 +35,7 @@ const UserPage = () => {
         onSelectCard={handleSelectCard}
         onDeleteCard={handleDeleteCard}
       />
-      <Modal selectEdit={selectedCard} >
+      <Modal selectEdit={selectedCard}>
         <Form addNewUser={handleAddUser} />
       </Modal>
     </div>
